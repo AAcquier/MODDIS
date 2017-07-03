@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+		
+        <title>MODDIS</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/pace.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>	
+		<script type="text/javascript" src="js/motesAnalytics.js"></script>	
+	</head>
+	<body onload = "JavaScript:checkRefresh();">
+		<header>
+			<a href="https://www.insight-centre.org"><img id="insight" src="img/insight.jpg"/></a>
+			<a href="http://www.nuigalway.ie"><img id="nuig" src="img/nuig.jpg" /></a>
+			<h1>MODDIS (Insight Building)</h1>
+		</header>
+		<div id="mySidenav" class="sidenav">
+			<ul class = "sidenavList">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><li>&times;</li></a>
+				<li id ="text"> Select a Location:</li><br>
+				<a href="#groundFloor"><li style = " background-image: url('img/ground floor.jpg'); width: 200px; height: 130px; background-size: 100% auto;" class = "list active"><br>GROUND FLOOR</li></a><br>
+				<a href="#firstFloor"  id="FirstFloor"><li style = " background-image: url('img/first floor.jpg'); width: 200px; height: 130px; background-size: 100% auto;" class = "list"><br>FIRST<br> FLOOR</li></a><br>
+				<a href="#secondFloor" id="SecondFloor"><li style = " background-image: url('img/second floor.jpg'); width: 200px; height: 130px; background-size: 100% auto;" class = "list"><br>SECOND FLOOR</li></a>
+			</ul>
+		</div>
+
+		<span style="font-size:30px;cursor:pointer; color: white" onclick="openNav()" id = "sidenavButton">&#9776; </span>
+		
+		<div id = "modal"></div>
+
+		<div class="tabs ">
+			<ul class ="tab-links">
+				<li class = "active"> <a href="#groundFloor"> Ground Floor</a></li>
+				<li> <a href="#firstFloor" id="FirstFloor2"> First Floor</a></li>
+				<li> <a href="#secondFloor" id="SecondFloor2"> Second Floor</a></li>
+			</ul>
+			
+			<div class="tab-content" id ="main">
+				<div id="groundFloor" class="tab active">
+					<br><h2>Ground Floor</h2>
+					<div id="buttonDispGF"  style = " background-image: url('img/ground floor.jpg')" onClick="reply_clickGF()">
+					<div id="maxTableGF">
+					<div id ="table"><table id = "colourCode">
+						<tbody>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="green" />
+							</svg></td>
+							<td height="70">Last Reading Within 12 Hours</td></tr>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="yellow" />
+							</svg></td>
+							<td height="70">Last Reading Between the Last 12 to 24 Hours </td></tr>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="red" />
+							</svg></td>
+							<td height="70">Last Reading Over 24 Hours or no Data for This Mote</td></tr>
+						</tbody>
+					</table></div>
+					</div>
+					</div><br><br>
+					<div class="buttonDisplay">
+						<a href = "#GFDisplay"><button type="button" class= "dataButton"  id ="displayTables" onClick="displayAllTablesGF()"> Display All Motes Data</button></a>
+						<button type="button" class= "dataButton" id ="clearAll" onClick ="resetGF()">Clear All</button>
+					</div>
+					<div id= "GFDisplay"></div>
+				</div>
+				
+				<div id="firstFloor" class="tab">
+					<br><h2> First Floor</h2>
+					<div id="buttonDispFF"  style = " background-image: url('img/first floor.jpg')" onClick="reply_clickFF()">
+					<div id="maxTableFF">
+					<div id ="table"><table id = "colourCode">
+						<tbody>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="green" />
+							</svg></td>
+							<td height="70">Last Reading Within 12 Hours</td></tr>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="yellow" />
+							</svg></td>
+							<td height="70">Last Reading Between the Last 12 to 24 Hours </td></tr>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="red" />
+							</svg></td>
+							<td height="70">Last Reading Over 24 Hours or no Data for This Mote</td></tr>
+						</tbody>
+					</table></div>
+					</div>
+					</div><br><br>
+					<div class="buttonDisplay">
+						<a  href = "#FFDisplay"><button type="button" class= "dataButton" href = "#FFDisplay"  id ="displayTables" onClick="displayAllTablesFF()"> Display All Motes Data</button></a>
+						<button type="button" class= "dataButton" id ="clearAll" onClick ="resetFF()">Clear All</button>
+					</div>
+					<div id= "FFDisplay"></div>
+				</div>
+				
+				<div id="secondFloor" class="tab">
+					<br><h2> Second Floor</h2>
+					<div id="buttonDispSF"  style = " background-image: url('img/second floor.jpg')" onClick="reply_clickSF()">
+					<div id="maxTableSF">
+					<div id ="table"><table id = "colourCode">
+						<tbody>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="green" />
+							</svg></td>
+							<td height="70">Last Reading Within 12 Hours</td></tr>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="yellow" />
+							</svg></td>
+							<td height="70">Last Reading Between the Last 12 to 24 Hours </td></tr>
+							<tr><td height="70"><svg width="50" height="40">
+								<circle cx="20" cy="20" r="13.5" stroke="black" stroke-width="2" fill="red" />
+							</svg></td>
+							<td height="70">Last Reading Over 24 Hours or no Data for This Mote</td></tr>
+						</tbody>
+					</table></div>
+					</div>
+					</div><br><br>
+					<div class="buttonDisplay">
+						<a href = "#SFDisplay"><button type="button" class= "dataButton" href = "#SFDisplay"  id ="displayTables" onClick="displayAllTablesSF()"> Display All Motes Data</button></a>
+						<button type="button" class= "dataButton" id ="clearAll" onClick ="resetSF()">Clear All</button>
+					</div>
+					<div id= "SFDisplay"></div>
+				</div>
+				
+			</div>
+		</div>
+		<footer>
+		Copyright&copy; Insight 2017
+		</footer>
+	</body>
+</html>
+	
